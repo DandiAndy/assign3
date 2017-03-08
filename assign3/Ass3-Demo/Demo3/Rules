@@ -1,0 +1,327 @@
+------------------------------------------------------------
+Association Rules Data Mining (Apriori Algorithm)
+------------------------------------------------------------
+
+Summary:
+
+  Input data file:              data1
+  Selected measures:            Support=20.0%
+                                Confidence=20.0%
+  Total rows in input data set: 14
+  Total rules discovered:       76
+  Rules displayed:              0 (All)
+  Sort type:                    0 (None)
+  Rules detail:                 Detailed
+  Start Time:                   Fri Feb  3 16:48:11 2017
+  Processing Time:              0.000 sec
+
+------------------------------------------------------------
+
+Rules:
+
+Rule #1: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[sunny] }
+    ---> { [Humidity]=[high] }
+
+Rule #2: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[high] }
+    ---> { [outlook]=[sunny] }
+
+Rule #3: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[sunny] }
+    ---> { [Windy]=[false] }
+
+Rule #4: (Support=21.4%, Confidence=37.5%)
+{ [Windy]=[false] }
+    ---> { [outlook]=[sunny] }
+
+Rule #5: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[sunny] }
+    ---> { [PlayTennis]=[N] }
+
+Rule #6: (Support=21.4%, Confidence=60.0%)
+{ [PlayTennis]=[N] }
+    ---> { [outlook]=[sunny] }
+
+Rule #7: (Support=21.4%, Confidence=75.0%)
+{ [temperature]=[hot] }
+    ---> { [Humidity]=[high] }
+
+Rule #8: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[high] }
+    ---> { [temperature]=[hot] }
+
+Rule #9: (Support=21.4%, Confidence=75.0%)
+{ [temperature]=[hot] }
+    ---> { [Windy]=[false] }
+
+Rule #10: (Support=21.4%, Confidence=37.5%)
+{ [Windy]=[false] }
+    ---> { [temperature]=[hot] }
+
+Rule #11: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[high] }
+    ---> { [Windy]=[false] }
+
+Rule #12: (Support=28.6%, Confidence=50.0%)
+{ [Windy]=[false] }
+    ---> { [Humidity]=[high] }
+
+Rule #13: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[high] }
+    ---> { [PlayTennis]=[N] }
+
+Rule #14: (Support=28.6%, Confidence=80.0%)
+{ [PlayTennis]=[N] }
+    ---> { [Humidity]=[high] }
+
+Rule #15: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[high] }
+    ---> { [Windy]=[true] }
+
+Rule #16: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[true] }
+    ---> { [Humidity]=[high] }
+
+Rule #17: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[high] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #18: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [Humidity]=[high] }
+
+Rule #19: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[high] }
+    ---> { [temperature]=[mild] }
+
+Rule #20: (Support=28.6%, Confidence=66.7%)
+{ [temperature]=[mild] }
+    ---> { [Humidity]=[high] }
+
+Rule #21: (Support=42.9%, Confidence=75.0%)
+{ [Windy]=[false] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #22: (Support=42.9%, Confidence=66.7%)
+{ [PlayTennis]=[P] }
+    ---> { [Windy]=[false] }
+
+Rule #23: (Support=21.4%, Confidence=37.5%)
+{ [Windy]=[false] }
+    ---> { [outlook]=[rain] }
+
+Rule #24: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[rain] }
+    ---> { [Windy]=[false] }
+
+Rule #25: (Support=21.4%, Confidence=37.5%)
+{ [Windy]=[false] }
+    ---> { [temperature]=[mild] }
+
+Rule #26: (Support=21.4%, Confidence=50.0%)
+{ [temperature]=[mild] }
+    ---> { [Windy]=[false] }
+
+Rule #27: (Support=28.6%, Confidence=50.0%)
+{ [Windy]=[false] }
+    ---> { [Humidity]=[normal] }
+
+Rule #28: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[normal] }
+    ---> { [Windy]=[false] }
+
+Rule #29: (Support=21.4%, Confidence=60.0%)
+{ [PlayTennis]=[N] }
+    ---> { [Windy]=[true] }
+
+Rule #30: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[true] }
+    ---> { [PlayTennis]=[N] }
+
+Rule #31: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[true] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #32: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [Windy]=[true] }
+
+Rule #33: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[true] }
+    ---> { [temperature]=[mild] }
+
+Rule #34: (Support=21.4%, Confidence=50.0%)
+{ [temperature]=[mild] }
+    ---> { [Windy]=[true] }
+
+Rule #35: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[true] }
+    ---> { [Humidity]=[normal] }
+
+Rule #36: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[normal] }
+    ---> { [Windy]=[true] }
+
+Rule #37: (Support=28.6%, Confidence=100.0%)
+{ [outlook]=[overcast] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #38: (Support=28.6%, Confidence=44.4%)
+{ [PlayTennis]=[P] }
+    ---> { [outlook]=[overcast] }
+
+Rule #39: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [outlook]=[rain] }
+
+Rule #40: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[rain] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #41: (Support=28.6%, Confidence=44.4%)
+{ [PlayTennis]=[P] }
+    ---> { [temperature]=[mild] }
+
+Rule #42: (Support=28.6%, Confidence=66.7%)
+{ [temperature]=[mild] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #43: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [temperature]=[cool] }
+
+Rule #44: (Support=21.4%, Confidence=75.0%)
+{ [temperature]=[cool] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #45: (Support=42.9%, Confidence=66.7%)
+{ [PlayTennis]=[P] }
+    ---> { [Humidity]=[normal] }
+
+Rule #46: (Support=42.9%, Confidence=85.7%)
+{ [Humidity]=[normal] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #47: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[rain] }
+    ---> { [temperature]=[mild] }
+
+Rule #48: (Support=21.4%, Confidence=50.0%)
+{ [temperature]=[mild] }
+    ---> { [outlook]=[rain] }
+
+Rule #49: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[rain] }
+    ---> { [Humidity]=[normal] }
+
+Rule #50: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[normal] }
+    ---> { [outlook]=[rain] }
+
+Rule #51: (Support=28.6%, Confidence=100.0%)
+{ [temperature]=[cool] }
+    ---> { [Humidity]=[normal] }
+
+Rule #52: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[normal] }
+    ---> { [temperature]=[cool] }
+
+Rule #53: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[sunny] }
+    ---> { [Humidity]=[high], [PlayTennis]=[N] }
+
+Rule #54: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[high] }
+    ---> { [outlook]=[sunny], [PlayTennis]=[N] }
+
+Rule #55: (Support=21.4%, Confidence=60.0%)
+{ [PlayTennis]=[N] }
+    ---> { [outlook]=[sunny], [Humidity]=[high] }
+
+Rule #56: (Support=21.4%, Confidence=100.0%)
+{ [outlook]=[sunny], [Humidity]=[high] }
+    ---> { [PlayTennis]=[N] }
+
+Rule #57: (Support=21.4%, Confidence=100.0%)
+{ [outlook]=[sunny], [PlayTennis]=[N] }
+    ---> { [Humidity]=[high] }
+
+Rule #58: (Support=21.4%, Confidence=75.0%)
+{ [Humidity]=[high], [PlayTennis]=[N] }
+    ---> { [outlook]=[sunny] }
+
+Rule #59: (Support=21.4%, Confidence=37.5%)
+{ [Windy]=[false] }
+    ---> { [PlayTennis]=[P], [outlook]=[rain] }
+
+Rule #60: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [Windy]=[false], [outlook]=[rain] }
+
+Rule #61: (Support=21.4%, Confidence=60.0%)
+{ [outlook]=[rain] }
+    ---> { [Windy]=[false], [PlayTennis]=[P] }
+
+Rule #62: (Support=21.4%, Confidence=50.0%)
+{ [Windy]=[false], [PlayTennis]=[P] }
+    ---> { [outlook]=[rain] }
+
+Rule #63: (Support=21.4%, Confidence=100.0%)
+{ [Windy]=[false], [outlook]=[rain] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #64: (Support=21.4%, Confidence=100.0%)
+{ [PlayTennis]=[P], [outlook]=[rain] }
+    ---> { [Windy]=[false] }
+
+Rule #65: (Support=28.6%, Confidence=50.0%)
+{ [Windy]=[false] }
+    ---> { [PlayTennis]=[P], [Humidity]=[normal] }
+
+Rule #66: (Support=28.6%, Confidence=44.4%)
+{ [PlayTennis]=[P] }
+    ---> { [Windy]=[false], [Humidity]=[normal] }
+
+Rule #67: (Support=28.6%, Confidence=57.1%)
+{ [Humidity]=[normal] }
+    ---> { [Windy]=[false], [PlayTennis]=[P] }
+
+Rule #68: (Support=28.6%, Confidence=66.7%)
+{ [Windy]=[false], [PlayTennis]=[P] }
+    ---> { [Humidity]=[normal] }
+
+Rule #69: (Support=28.6%, Confidence=100.0%)
+{ [Windy]=[false], [Humidity]=[normal] }
+    ---> { [PlayTennis]=[P] }
+
+Rule #70: (Support=28.6%, Confidence=66.7%)
+{ [PlayTennis]=[P], [Humidity]=[normal] }
+    ---> { [Windy]=[false] }
+
+Rule #71: (Support=21.4%, Confidence=33.3%)
+{ [PlayTennis]=[P] }
+    ---> { [temperature]=[cool], [Humidity]=[normal] }
+
+Rule #72: (Support=21.4%, Confidence=75.0%)
+{ [temperature]=[cool] }
+    ---> { [PlayTennis]=[P], [Humidity]=[normal] }
+
+Rule #73: (Support=21.4%, Confidence=42.9%)
+{ [Humidity]=[normal] }
+    ---> { [PlayTennis]=[P], [temperature]=[cool] }
+
+Rule #74: (Support=21.4%, Confidence=100.0%)
+{ [PlayTennis]=[P], [temperature]=[cool] }
+    ---> { [Humidity]=[normal] }
+
+Rule #75: (Support=21.4%, Confidence=50.0%)
+{ [PlayTennis]=[P], [Humidity]=[normal] }
+    ---> { [temperature]=[cool] }
+
+Rule #76: (Support=21.4%, Confidence=75.0%)
+{ [temperature]=[cool], [Humidity]=[normal] }
+    ---> { [PlayTennis]=[P] }
+
+
+

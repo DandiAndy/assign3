@@ -1,0 +1,312 @@
+Summary:
+Total rows in the original set: 14
+Total rules discovered: 76
+The selected measures: Support = 0.20  Confidence = 0.20
+-------------------------------------------------------------------------------------
+
+Rules:
+
+Rule#1: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { Windy=false outlook=rain }
+
+Rule#2: (Support=0.21, Confidence=0.38)
+{ Windy=false  }
+ ----> { PlayTennis=P outlook=rain }
+
+Rule#3: (Support=0.21, Confidence=0.60)
+{ outlook=rain  }
+ ----> { PlayTennis=P Windy=false }
+
+Rule#4: (Support=0.21, Confidence=0.50)
+{ PlayTennis=P  Windy=false  }
+ ----> { outlook=rain }
+
+Rule#5: (Support=0.43, Confidence=0.67)
+{ PlayTennis=P  }
+ ----> { Windy=false }
+
+Rule#6: (Support=0.43, Confidence=0.75)
+{ Windy=false  }
+ ----> { PlayTennis=P }
+
+Rule#7: (Support=0.21, Confidence=1.00)
+{ outlook=rain  PlayTennis=P  }
+ ----> { Windy=false }
+
+Rule#8: (Support=0.21, Confidence=0.60)
+{ outlook=rain  }
+ ----> { PlayTennis=P }
+
+Rule#9: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { outlook=rain }
+
+Rule#10: (Support=0.21, Confidence=1.00)
+{ outlook=rain  Windy=false  }
+ ----> { PlayTennis=P }
+
+Rule#11: (Support=0.21, Confidence=0.60)
+{ outlook=rain  }
+ ----> { Windy=false }
+
+Rule#12: (Support=0.21, Confidence=0.38)
+{ Windy=false  }
+ ----> { outlook=rain }
+
+Rule#13: (Support=0.21, Confidence=0.60)
+{ PlayTennis=N  }
+ ----> { Humidity=high outlook=sunny }
+
+Rule#14: (Support=0.21, Confidence=0.43)
+{ Humidity=high  }
+ ----> { PlayTennis=N outlook=sunny }
+
+Rule#15: (Support=0.21, Confidence=0.60)
+{ outlook=sunny  }
+ ----> { PlayTennis=N Humidity=high }
+
+Rule#16: (Support=0.21, Confidence=0.75)
+{ PlayTennis=N  Humidity=high  }
+ ----> { outlook=sunny }
+
+Rule#17: (Support=0.29, Confidence=0.80)
+{ PlayTennis=N  }
+ ----> { Humidity=high }
+
+Rule#18: (Support=0.29, Confidence=0.57)
+{ Humidity=high  }
+ ----> { PlayTennis=N }
+
+Rule#19: (Support=0.21, Confidence=1.00)
+{ outlook=sunny  PlayTennis=N  }
+ ----> { Humidity=high }
+
+Rule#20: (Support=0.21, Confidence=0.60)
+{ outlook=sunny  }
+ ----> { PlayTennis=N }
+
+Rule#21: (Support=0.21, Confidence=0.60)
+{ PlayTennis=N  }
+ ----> { outlook=sunny }
+
+Rule#22: (Support=0.21, Confidence=1.00)
+{ outlook=sunny  Humidity=high  }
+ ----> { PlayTennis=N }
+
+Rule#23: (Support=0.21, Confidence=0.60)
+{ outlook=sunny  }
+ ----> { Humidity=high }
+
+Rule#24: (Support=0.21, Confidence=0.43)
+{ Humidity=high  }
+ ----> { outlook=sunny }
+
+Rule#25: (Support=0.21, Confidence=0.75)
+{ temperature=cool  }
+ ----> { PlayTennis=P Humidity=normal }
+
+Rule#26: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { temperature=cool Humidity=normal }
+
+Rule#27: (Support=0.21, Confidence=0.43)
+{ Humidity=normal  }
+ ----> { temperature=cool PlayTennis=P }
+
+Rule#28: (Support=0.21, Confidence=1.00)
+{ temperature=cool  PlayTennis=P  }
+ ----> { Humidity=normal }
+
+Rule#29: (Support=0.21, Confidence=0.75)
+{ temperature=cool  }
+ ----> { PlayTennis=P }
+
+Rule#30: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { temperature=cool }
+
+Rule#31: (Support=0.21, Confidence=0.75)
+{ Humidity=normal  temperature=cool  }
+ ----> { PlayTennis=P }
+
+Rule#32: (Support=0.29, Confidence=0.57)
+{ Humidity=normal  }
+ ----> { temperature=cool }
+
+Rule#33: (Support=0.29, Confidence=1.00)
+{ temperature=cool  }
+ ----> { Humidity=normal }
+
+Rule#34: (Support=0.21, Confidence=0.50)
+{ Humidity=normal  PlayTennis=P  }
+ ----> { temperature=cool }
+
+Rule#35: (Support=0.43, Confidence=0.86)
+{ Humidity=normal  }
+ ----> { PlayTennis=P }
+
+Rule#36: (Support=0.43, Confidence=0.67)
+{ PlayTennis=P  }
+ ----> { Humidity=normal }
+
+Rule#37: (Support=0.29, Confidence=0.44)
+{ PlayTennis=P  }
+ ----> { Humidity=normal Windy=false }
+
+Rule#38: (Support=0.29, Confidence=0.57)
+{ Humidity=normal  }
+ ----> { PlayTennis=P Windy=false }
+
+Rule#39: (Support=0.29, Confidence=0.50)
+{ Windy=false  }
+ ----> { PlayTennis=P Humidity=normal }
+
+Rule#40: (Support=0.29, Confidence=0.67)
+{ PlayTennis=P  Humidity=normal  }
+ ----> { Windy=false }
+
+Rule#41: (Support=0.29, Confidence=0.67)
+{ Windy=false  PlayTennis=P  }
+ ----> { Humidity=normal }
+
+Rule#42: (Support=0.29, Confidence=1.00)
+{ Windy=false  Humidity=normal  }
+ ----> { PlayTennis=P }
+
+Rule#43: (Support=0.29, Confidence=0.50)
+{ Windy=false  }
+ ----> { Humidity=normal }
+
+Rule#44: (Support=0.29, Confidence=0.57)
+{ Humidity=normal  }
+ ----> { Windy=false }
+
+Rule#45: (Support=0.21, Confidence=0.60)
+{ outlook=rain  }
+ ----> { temperature=mild }
+
+Rule#46: (Support=0.21, Confidence=0.50)
+{ temperature=mild  }
+ ----> { outlook=rain }
+
+Rule#47: (Support=0.21, Confidence=0.60)
+{ outlook=rain  }
+ ----> { Humidity=normal }
+
+Rule#48: (Support=0.21, Confidence=0.43)
+{ Humidity=normal  }
+ ----> { outlook=rain }
+
+Rule#49: (Support=0.29, Confidence=1.00)
+{ outlook=overcast  }
+ ----> { PlayTennis=P }
+
+Rule#50: (Support=0.29, Confidence=0.44)
+{ PlayTennis=P  }
+ ----> { outlook=overcast }
+
+Rule#51: (Support=0.21, Confidence=0.60)
+{ outlook=sunny  }
+ ----> { Windy=false }
+
+Rule#52: (Support=0.21, Confidence=0.38)
+{ Windy=false  }
+ ----> { outlook=sunny }
+
+Rule#53: (Support=0.29, Confidence=0.67)
+{ temperature=mild  }
+ ----> { Humidity=high }
+
+Rule#54: (Support=0.29, Confidence=0.57)
+{ Humidity=high  }
+ ----> { temperature=mild }
+
+Rule#55: (Support=0.21, Confidence=0.50)
+{ temperature=mild  }
+ ----> { Windy=false }
+
+Rule#56: (Support=0.21, Confidence=0.38)
+{ Windy=false  }
+ ----> { temperature=mild }
+
+Rule#57: (Support=0.21, Confidence=0.50)
+{ temperature=mild  }
+ ----> { Windy=true }
+
+Rule#58: (Support=0.21, Confidence=0.50)
+{ Windy=true  }
+ ----> { temperature=mild }
+
+Rule#59: (Support=0.29, Confidence=0.67)
+{ temperature=mild  }
+ ----> { PlayTennis=P }
+
+Rule#60: (Support=0.29, Confidence=0.44)
+{ PlayTennis=P  }
+ ----> { temperature=mild }
+
+Rule#61: (Support=0.21, Confidence=0.75)
+{ temperature=hot  }
+ ----> { Humidity=high }
+
+Rule#62: (Support=0.21, Confidence=0.43)
+{ Humidity=high  }
+ ----> { temperature=hot }
+
+Rule#63: (Support=0.21, Confidence=0.75)
+{ temperature=hot  }
+ ----> { Windy=false }
+
+Rule#64: (Support=0.21, Confidence=0.38)
+{ Windy=false  }
+ ----> { temperature=hot }
+
+Rule#65: (Support=0.29, Confidence=0.57)
+{ Humidity=high  }
+ ----> { Windy=false }
+
+Rule#66: (Support=0.29, Confidence=0.50)
+{ Windy=false  }
+ ----> { Humidity=high }
+
+Rule#67: (Support=0.21, Confidence=0.43)
+{ Humidity=high  }
+ ----> { Windy=true }
+
+Rule#68: (Support=0.21, Confidence=0.50)
+{ Windy=true  }
+ ----> { Humidity=high }
+
+Rule#69: (Support=0.21, Confidence=0.43)
+{ Humidity=high  }
+ ----> { PlayTennis=P }
+
+Rule#70: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { Humidity=high }
+
+Rule#71: (Support=0.21, Confidence=0.43)
+{ Humidity=normal  }
+ ----> { Windy=true }
+
+Rule#72: (Support=0.21, Confidence=0.50)
+{ Windy=true  }
+ ----> { Humidity=normal }
+
+Rule#73: (Support=0.21, Confidence=0.50)
+{ Windy=true  }
+ ----> { PlayTennis=P }
+
+Rule#74: (Support=0.21, Confidence=0.33)
+{ PlayTennis=P  }
+ ----> { Windy=true }
+
+Rule#75: (Support=0.21, Confidence=0.50)
+{ Windy=true  }
+ ----> { PlayTennis=N }
+
+Rule#76: (Support=0.21, Confidence=0.60)
+{ PlayTennis=N  }
+ ----> { Windy=true }
+

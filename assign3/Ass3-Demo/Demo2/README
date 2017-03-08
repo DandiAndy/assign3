@@ -1,0 +1,112 @@
+---------------------------------------------------------------------------------------------
+This is an example of AR algorithm implementation in Java.
+---------------------------------------------------------------------------------------------
+
+- What is this progrm for?
+
+ This progrm is an implementation of the association rule mining algorithm Apriori written in Java.
+
+ 
+- Overview of the program code:
+
+The assignmnet contains the "AprioriAlgorithm" folder which contains the complete solution which can be opend in Eclipse. It contains following files file containing functions.
+
+Note (BONUS): 
+============
+This program also incorporates BONUS logic of pruning the rules while generating rules. The logic of the BONUS is:
+...
+
+There are 8 files with mentioned main functions (Other than getter, setter and constructors)
+
+File Name					Function Names
+===============================================================================================
+1. Apriori.java					
+					public void RunApriori()
+					public List<ItemSet> SortList (List<ItemSet> lstKItemItemSetCopied)
+					private void ProcessRules()
+					public void GenerateRulesSets(List<Rules> lstRules, List<KeyValue> lstKeyValue) 
+					private boolean IsCombinationExists(List<KeyValue> lstItemMultiply, List<List<KeyValue>> list)
+					private List<ItemSet> GenerateFirstItemSet() throws Exception
+					private void PruneKItemSet(List<ItemSet> lstKItemSet) throws ParseException
+					private List<ItemSet> GenerateFrequentItemSet(List<ItemSet> lstItemSet, int iLevelGenerated)
+					private boolean IsItemSetExists(List<ItemSet> lstKLevelItemSet, List<KeyValue> lstKeyValues)
+					private List<KeyValue> JoinItemSet(int K, List<KeyValue> itemsOutter, List<KeyValue> itemsInner)
+					private boolean IsPruneRules()
+					private double GetSupportValueForItemSet(List<KeyValue> kvList)
+					private List<Rules> GenerateRules(List<List<KeyValue>> lstConditions, List<KeyValue> lstKeyValue)
+					private List<KeyValue> GetJoinedItems(KeyValue keyValue, List<KeyValue> list)
+					private boolean IsRuleExists(List<Rules> lstRules, Rules ruleToFind)
+				
+2. Database.java
+					private void LoadData(string strFileName)
+					public int Rowscount()
+					public int CountLiteral(List<KeyValue> kvList)
+					public List<string> GetColumnDistinctValues(int iColumnIndex)
+
+3. Processing.java
+					public int LoadDatabase(String fileName)
+					public void Run(double dbSupport, double dbConfidence )
+					private void PrintDataOnScreen()
+					public void SaveRules(double dbSupport, double dbConfidence)
+						
+4. ItemSet.java
+					Structure class for KeyValue set and their confidence and suport
+
+5. KeyValue.java
+					Structure of Keyvalue
+		
+6. Rules.java
+					Structure of rules with support and confidence of rules
+
+7. RulesWriter.java
+					public void WriteRulesToFile(string FileName, List<Rules> lstRules ,int TotalDataRows, double SupportValue, double ConfidenceValue)
+					private void WriteRules(List<Rules> lstRules, BufferedWriter fileWriter)
+					private void WriteHeader(List<Rules> lstRules, int TotalDataRows, double SupportValue, double ConfidenceValue, BufferedWriter fileWriter)
+
+8. MainClass.java
+					public static void main(String[] args)
+
+
+- The following is the  program structure:
+				
+				Input Filename, Confidence and Support:
+					Database class will load the data into memory.
+				Run Apriori:
+					Apriori class will generate the candidates (pruned) and will generate the Rules
+				Save:
+					will save the rules to file.
+
+main()	----> Input filename, support, confidence
+Database ---->loadDB 
+                 ---->fileexists
+		-----> Run
+
+Processing ----> RunApriori
+         ---->buildFirstItemset
+         ---->pruneItemset
+         ---->generateKitemitemset
+	---->pruneKItemItemset
+	-----> GenerateRule
+		----->CalculateConfidenceRate
+		-----> Prune
+	 -----> PrintOnScreen
+RulesWriter---->Save
+
+
+-How to run the program:
+	Place input file in Folder AprioriAlgorithm-Bonus
+	Inside Apriori Algorithm Folder, Compile whole project by javac *.java
+	Run the executable program: Apriori 
+	
+Demo example: 
+prof6405@bluenose:~/Ass/Ass3-demo2$ Apriori
+Enter Data file name:
+../data1
+Enter Support Percentage: (eg: .2)
+.2
+Enter Confidence Percentage: (eg: .6)
+.6
+Total rules found: 35
+Total k Item ItemSets: 42
+Rules saved to file successfully.
+

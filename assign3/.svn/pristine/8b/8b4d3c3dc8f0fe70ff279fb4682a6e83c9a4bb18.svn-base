@@ -1,0 +1,294 @@
+--------------------------------------------------------------  
+  This is a README file example for  an implimentation of  
+  Apriori Association Data Mining.  
+--------------------------------------------------------------
+
+
+Summary:
+	This program is a C-language implementation of association 
+	rule mining that uses the Apriori algorithm.  It was created
+	for CSCI6405 as an assignment.
+
+Build:
+	To create the program on a Unix-based system, extract the
+	files to a directory and type the following:
+	
+	make
+	
+	This will compile and link the files into an executable "apriori" 
+	according to the included makefile. It is assumed that the 
+	"cc" compiler exists in your path.
+	
+	If successful, the output of the build should be something like:
+	
+	cc -c apriori.c
+	cc -c calc_itemsets.c
+	cc -c calc_rules.c
+	cc -c linked_list.c
+	cc -c load_datafile.c
+	cc -c output.c
+	cc -o apriori apriori.o calc_itemsets.o calc_rules.o linked_list.o load_datafile.o output.o -lm
+	rm *.o
+	
+Usage (Interactive):
+	There are two methods for using the program.  To start the
+	program in interactive mode, where the program will ask the 
+	user to input several parameters, simply type:
+	
+	./apriori
+	
+	The program will then ask for the following parameters:
+		1 - name of input data file 
+			- may include path, otherwise current directory assumed
+		2 - name of output data file (may include path)
+			- may include path, otherwise current directory assumed
+		3 - minimum support
+			- as decimal (eg. 0.1) or percentage (eg. 10%)
+		4 - minimum confidence
+			- as decimal (eg. 0.1) or percentage (eg. 10%)
+
+	The program will then confirm the values with the user,
+	and will keep the user advised of progress through the modules.
+	
+	A minimum support value of zero (0.0) will be corrected to
+	a single row (ie. 1/(total rows) ).  A minimum confidence
+	of 0.0 is therefore an acceptable value, since the confidence
+	resulting from the support values will always be greater than 0.
+	Entering minimum support = 0 and minimum confidence = 0 is
+	therefore an acceptable method for returning all possible
+	non-trivial (and non-contradictory) rules, although the 
+	computation time will likely be quite large (see Performance
+	and Accuracy below).
+		
+Usage (Command Line):
+	In addition, the command line can be used to specify parameters.
+	The parameters can be in any order. An input file must be specified, 
+	but all other parameters have defaults as follows:
+		NOTE: Unlike the interactive method above, the support
+			and confidence values must be specified as 
+			decimal values from 0 to 1.
+	
+            -c <n>    Specify minimum confidence           (default 50.0%)
+            -d        Flat (single line) rules output      (default=detail)
+            -h or -?  Print help screen.
+            -o <file> Output filename for rules            (default=Rules)
+            -r <n>    Maximum rules returned               (default=all)
+            -s <n>    Specify minimum support              (default 10.0%)
+            -t <n>    Sort method for rules output:        (default=0)
+                0        No sort, output as captured
+                1        Sort resulting rules by confidence then support
+                2        Sort resulting rules by support then confidence
+            -v        Verbose output                       (default=off)
+	
+	Example of usage:
+		./apriori data1 -s 0.2 -c 0.5 -t 1 -v -o myrules.txt
+	    
+Input File:
+	The input data file should be space-separated.  This means
+	that each individual column value may not contain spaces.
+	The first row of the data file must contain a space-
+	separated list of column names.  Blank rows subsequent
+	to the first row (column names) are ignored.
+	
+Program Execution:
+	As the program executes, it will display the module in
+	which it is currently working, and continuous measure(s)
+	of the progress through this module. The four modules 
+	include "Loading datafile," "Calculating large itemsets,"
+	"Generating rules" and "Sorting rules." 
+	
+	With the verbose option, much additional information is
+	provided, such as the enumerated conditions found in the
+	data file and a list of all enumerated large itemsets.
+	
+Output File:
+	The first few lines of the output file consist of a summary
+	of the entered parameters, and include a performance measure.
+	The remaining lines contain the association rules that
+	were found, in one of two available formats:
+	
+	Example of a rule in Detailed format (default):
+	
+	Rule #407: (Support=14.3%, Confidence=33.3%)
+	{ [PlayTennis]=[P], [Humidity]=[normal] } ==> { [Windy]=[false], [temperature]=[cool] }	
+	
+	Example of same rule in Simple format (suitable for flat files or Excel):
+
+	407,0.143,0.333,"{ [P], [normal] } ==> { [false], [cool] }",
+
+	Note that the simple format includes comma-separated values,
+	and an additional line for column headings at the top since the 
+	rules no longer include column headings. The support and
+	confidence values are also expressed as a decimal rather than
+	a percentage.
+	
+Overview of the program code:
+	There are several included files:
+		apriori.c 	- contains C code for main() and interprets user parameters
+		apriori.h	- contains defaults, data structures and function prototypes
+		calc_itemsets.c - contains C code to calculate large itemsets
+		calc_rules.c	- contains C code to generate rules with high confidence
+		linked_list.c	- contains C code for linked list supporting functions
+		load_datafile.c	- contains C code to load datafile and create associations
+		output.c	- contains C code to sort and output the generated rules
+		makefile	- makefile to build apriori using make
+	
+	Global variables are used for the pointers to large data structures.
+	This was also done for several variables that are used by many
+	of the functions, in order to reduce the number of parameters passed
+	between the functions and simplify the function prototypes for the 
+	large program modules.  The global variables are defined in apriori.c
+	and repeated as "extern"s in other C files that require them.
+
+Program Structure:
+	The basic program structure is as follows.  Note that some supporting
+	functions have been removed for clarity.
+	
+	main()				- interpret user entered parameters
+		load_datafile()		- load datafile and enumerate conditions
+			get_next_val()	- get the next column from a buffer
+			strip()		- remove whitespace from a buffer
+			enumerate()	- enumerate column/value associations
+		calc_support()		- calculate large itemsets and support
+			isJoinable()	- determine if two itemsets are joinable
+			count()		- determine the support for an itemset
+		determine_rules()	- generate rules and calculate confidence
+			is_subset()	- determine if itemset is subset of another
+			copy_itemset()	- copy to left hand side (LHS) of rule
+			copy_itemset_except()  - copy to right (RHS) of rule
+		sort_rules()		- sort the generated rules (bubble sort)
+			is_greater()	- determine sort order of two rules
+		output_rules()		- output the rules into a file
+		free_all()		- free dynamically allocated memory
+		
+Data Structures:
+	A single linked list structure is used for all large data sets in
+	the program.  The structure is defined in apriori.h, and contains
+	a dynamically-allocated string, two integers, two floats, two 
+	pointers to additional linked lists, and a pointer to the next node
+	in the current linked list. This allows for multi-dimensional lists
+	(ie. each node in a list may point to one or two additional lists).
+	This makes certain operations quite efficient, at the expense of
+	readability since the lists must be traversed intelligently.
+	
+	pColumn - pointer to linked list for column names and allowed values
+	  - contains a linked list of nodes to store column headers, each of which
+	  contains a linked list of nodes to store column values for that column
+	
+	str	    - string containing column or value
+	val	    - for columns, contains unique integer for col/val assoc.
+	level	    - (not used)
+	confidence  - (not used)
+	support	    - (not used)
+	list1	    - for column headers, points to a list of column values
+	list2	    - (not used)
+	next	    - points to next column or column value
+	  
+	pDatafile  - pointer to linked list containing enumerated datafile rows/cols
+	  -contains a linked list of nodes to store rows, each of which 
+	  contains a linked list of nodes to store column values.  The "row"
+	  nodes contain the first column value, the first "column" node contains
+	  the second column value, and so on.
+
+	str	    - (not used)
+	val	    - integer containing association enumeration
+	level	    - (not used)
+	confidence  - (not used)
+	support	    - (not used)
+	list1	    - for row nodes, points to additional column nodes
+	list2	    - (not used)
+	next	    - points to next row or column
+	  
+  	pItemSet   - pointer to linked list of itemsets (with support values)
+	  - contains a linked list of itemsets, each of which contains
+	  a linked list of enumerated column / value associations. 
+
+	str	    - (not used)
+	val	    - integer containing association enumeration
+	level	    - number of associations in this itemset
+	confidence  - (not used)
+	support	    - for itemset nodes, support for this association
+	list1	    - for itemset nodes, points to additional association nodes
+	list2	    - (not used)
+	next	    - points to next association or itemset
+	  		  
+	pRules     - pointer to linked list of generated rules (with conf values)
+	  - contains a linked list of association rules, each of which
+	  contains a linked list of the associations on the LHS of the rule
+	  and another linked list of the RHS associations.
+
+	str	    - (not used)
+	val	    - (not used)
+	level	    - (not used)
+	confidence  - for rule nodes, confidence for this rule
+	support	    - for rule nodes, support for this rule
+	list1	    - for rule nodes, points to LHS associations
+	list2	    - for rule nodes, points to RHS associations
+	next	    - points to next rule or association
+	  
+	In addition, pRef contains a dynamically-allocated one-dimensional 
+	array of a structure that includes a pointer to the column name 
+	and column value, for each unique enumerated column / value association.
+	This is used as an index to facilitate printing of the rules.
+	
+Performance:
+	The test machine was a 3.4GHz Pentium IV-HT laptop with 1GB memory
+	running SuSE 9.2 Professional (Linux kernel 2.6.8-24.11-smp).
+	The Dalhousie machine torch, a multi-user Sun Fire 4800 with
+	4x900MHz UltraSPARC-III processors and 16GB under moderate load.
+	
+	In order to improve performance during an append to a linked list,
+	a cache mechanism was added to keep track of the tail of each of
+	the four major linked list types (pColumn, pRules, pItemSet and
+	pDatafile). This resulted in an order of magnitude better
+	performance with large data sets, since previously each
+	append operation had to walk through the entire linked list
+	to find the end, then perform the append.
+
+	To keep sort performance reasonable, no data is swapped during the 
+	bubblesort operation:  only the "next" pointers	are swapped.
+	Since the bubblesort algorithm is not very efficient, it
+	would be better to change this to a quicksort algorithm;
+	however, this was not done due to time constraints.
+	
+	With no sort, the following times were recorded with the given data
+	files, using minimum support = 0.1 and confidence = 0.1:
+	
+							test machine	torch
+	data1 (14 rows, 5 columns, 11 associations):	0.000 sec	0.000 sec
+	data2 (188 rows, 7 columns, 90 associations):	0.010 sec	0.030 sec 
+	data3 (149 rows, 10 columns, 44 associations):	0.120 sec	0.330 sec
+
+Accuracy:
+	The program was compared to the reference Apriori executable.
+	With the same three given datafiles, these gave the following
+	number of rules (S=minimum support, C=minimum confidence):
+
+	data1:
+	-----		S=C=0.01   S=C=0.1   S=C=.3   S=C=0.5   S=0.6,C=0.9
+	apriori (test)	2000       412	     4	      0	        0
+	Apriori (ref)	2000       412	     4	      0	        0
+
+	data2:
+	-----	        S=C=0.01   S=C=0.1   S=C=.3   S=C=0.5   S=0.6,C=0.9
+	apriori (test)	38634      550	     52	      36	5
+	Apriori (ref)	38634      550	     52	      36	5
+	
+	data3:
+	-----		S=C=0.01   S=C=0.1   S=C=.3   S=C=0.5   S=0.6,C=0.9
+	apriori (test)	1144972    9092	     196      12        6
+	Apriori (ref)	1144972    9092	     196      12	6
+
+Future Work:
+	This implementation could be improved by customizing the linked
+	list to each of the four large data types, although this would
+	require each of the linked list methods (ll_add, ll_append,
+	ll_remove, ll_free) to be customized for each of these types.
+	This would reduce the amount of memory used, but would not
+	significantly affect performance. As mentioned above, a
+	quicksort algorithm could be used rather than a bubblesort
+	for the rules sorting, which would greatly improve sort 
+	performance.  
+
+Contact:	
+        ......	
