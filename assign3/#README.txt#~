@@ -1,0 +1,17 @@
+<COMPILATION>
+
+To compile the program the user must run the following commands in this order(Make sure you have read, write permissions on the file):
+
+'make'
+'java RuleMiner'
+
+This will make the executable and run it. 
+
+<OVERALL DESIGN>
+
+The following is a description of the program and it's methods. Using Java, 
+the association rule miner was created in one file containing
+
+
+
+
