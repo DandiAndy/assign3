@@ -69,7 +69,12 @@ public class RuleMiner {
 	//System.out.println(k1);
 	//System.out.println("");
 	Map<ArrayList<String>, Double> itemsets = Apriori(k1, data);
-	System.out.println(itemsets);
+	//System.out.println(itemsets);
+	ArrayList<ArrayList<String>> temp = new ArrayList<ArrayList<String>>(itemsets.keySet());
+
+	for(int k=temp.size()-1; k >= 0; k--){
+	    createRules(itemsets, temp.get(k), temp.get(k).size());
+	}
      }
 
     public static Map<String, Double> BuildFirstItemset(Map<Integer, ArrayList<String>> T){
@@ -225,5 +230,46 @@ public class RuleMiner {
 	    C = new ArrayList<ArrayList<String>>(Cy);
 	}
 	return results;
+    }
+    //n is size of n-1! itemset
+    public static void createRules(Map<ArrayList<String>, Double> supMap, ArrayList<String> itemset, int n){
+       
+	if(n-1 <= 0)
+	    return;
+
+	ArrayList<String> right = new ArrayList<String>(itemset);
+	ArrayList<String> left = new ArrayList<String>(itemset);
+	Double conf = 0.0;
+	
+	//find all itemsets in supMap that are n-1 
+	ArrayList<ArrayList<String>> listN = new ArrayList<ArrayList<String>>(supMap.keySet());
+	ArrayList<ArrayList<String>> temp = new ArrayList<ArrayList<String>>();
+	for(ArrayList<String> nM1 : listN){
+	    if(nM1.size() == n-1){
+		temp.add(nM1);
+	    }
+	}
+	//for each of the n-1 itemsets, we will find the ones that are subsets of the n itemset
+	for(ArrayList<String> nM1 : temp){
+	    if(itemset.containsAll(nM1)){
+		//System.out.println(itemset+" : "+nM1);
+		//System.out.println(left+" : "+right);
+		right.removeAll(nM1);
+		left.removeAll(right);
+		conf = supMap.get(itemset)/supMap.get(nM1);
+		//System.out.println(left+" : "+right);
+		//System.out.println("");
+		if(conf >= (minConf/100)){
+		    System.out.println("Rules Discovered: ");
+		    System.out.println("Rule: (Support = "+supMap.get(itemset)+", Confidence = "+conf+")");
+		    System.out.println(left+" --> "+right);
+		    //recursive step
+		    createRules(supMap, itemset, n-1);
+		}
+		right = new ArrayList<String>(itemset);
+		left = new ArrayList<String>(itemset);
+	    }
+	    
+	}
     }
 }
