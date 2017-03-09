@@ -7,6 +7,9 @@ public class RuleMiner {
     public static double minConf = 20.00;
     public static double minSup = 50.00;
     public static String[] columns;
+    public static File file = new File("Rules.txt");
+    public static FileWriter fileWriter = null;
+    public static BufferedWriter writer = null;
 
     public static void main(String[] args) throws IOException {
 	Scanner scn  = new Scanner(System.in);
@@ -71,7 +74,27 @@ public class RuleMiner {
 	Map<ArrayList<String>, Double> itemsets = Apriori(k1, data);
 	//System.out.println(itemsets);
 	ArrayList<ArrayList<String>> temp = new ArrayList<ArrayList<String>>(itemsets.keySet());
+	
+	//File file = new File("Rules.txt");
+        //FileWriter fileWriter = null;
+        //BufferedWriter writer = null;
+	if(file.exists())
+	    file.delete();
 
+	file = new File("Rules.txt");
+    
+	try{
+	    fileWriter = new FileWriter(file, true);
+	    writer = new BufferedWriter(fileWriter);
+	    writer.write("Summary:\nTotal rows in the original set: "+data.size()+"\nThe selected measures: Support="+minSup+" Confidence="+minConf);
+	    writer.write("\n---------------------------------------------------------------------------\n");
+	    writer.write("\nRules:\n");
+ 
+	}  catch(final IOException e){
+	    System.err.println(e.getMessage());
+	    System.out.println("Could not create file!");
+	    }
+	writer.close();
 	for(int k=temp.size()-1; k >= 0; k--){
 	    createRules(itemsets, temp.get(k), temp.get(k).size());
 	}
@@ -232,7 +255,7 @@ public class RuleMiner {
 	return results;
     }
     //n is size of n-1! itemset
-    public static void createRules(Map<ArrayList<String>, Double> supMap, ArrayList<String> itemset, int n){
+    public static void createRules(Map<ArrayList<String>, Double> supMap, ArrayList<String> itemset, int n) throws IOException{
        
 	if(n-1 <= 0)
 	    return;
@@ -259,7 +282,20 @@ public class RuleMiner {
 		conf = supMap.get(itemset)/supMap.get(nM1);
 		//System.out.println(left+" : "+right);
 		//System.out.println("");
+
 		if(conf >= (minConf/100)){
+		    //write rules to file
+		    try{
+			fileWriter = new FileWriter(file, true);
+			writer = new BufferedWriter(fileWriter);
+			writer.write("\nRule: (Support = "+supMap.get(itemset)+", Confidence = "+conf+")");
+			writer.write("\n"+left+" ---> "+right);
+			    }
+		    catch(final IOException e){
+			System.err.println(e.getMessage());
+			System.out.println("Could not write rules to file!");
+		    }
+		    writer.close();
 		    System.out.println("Rules Discovered: ");
 		    System.out.println("Rule: (Support = "+supMap.get(itemset)+", Confidence = "+conf+")");
 		    System.out.println(left+" --> "+right);

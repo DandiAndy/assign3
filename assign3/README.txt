@@ -20,9 +20,9 @@ the BuildFirstItemset() method. The build first method creates a Hashmap with
 the 1-itemsets and their corresponding support values. This 1-itemset is sent
 into the Apriori() method. The Apriori method is responsible for finding the
 2-3-...-n-itemsets and calculating their corresponding supports. Those itemsets
-that don't meet the min support value are pruned. Once complete,another Hashmap
+that don't meet the min support value are pruned in the CreateRules() method. Once complete,another Hashmap
 with all of <itemsets, Support> with the minimum support levels is made and 
-tranfered to the final method. The final method, CreateRules(), creates the 
+transfered to the final method. The final method, CreateRules(), creates the 
 rules using the calculated support of each Hashmap couple. The created rules 
 are printed and saved in the 'Rules' file.
 
